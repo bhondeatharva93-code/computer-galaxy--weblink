@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YourBrand | Gaming, editing, trading and office PCs</title>
+  <meta name="description" content="Pick what you will use a PC for, set a budget and see a ready-to-ship build with every part listed. Prebuilt PCs, custom builds and components with EMI.">
+  <meta property="og:title" content="YourBrand | Gaming, editing, trading and office PCs">
+  <meta property="og:description" content="Set a budget and see the right PC, with every part listed.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/rgb-hero.css">
+  <link rel="stylesheet" href="css/assistant.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="rgb-hero" id="rgb-hero" aria-label="Featured gaming PCs"></section>
+
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <h2 class="hero__title">Set a budget. Get the right PC.</h2>
+          <p>Say what you will use it for, drag the budget, and see a ready-to-ship PC with every part listed.</p>
+          <div class="btn-row">
+            <a class="btn btn--amber" href="shop.html?cat=prebuilt">Browse prebuilt PCs</a>
+            <a class="btn btn--ghost" href="build.html">Build your own</a>
+          </div>
+          <ul class="hero__proof" id="proof"></ul>
+        </div>
+        <div class="tuner" id="tuner" aria-label="PC finder"></div>
+      </div>
+    </section>
+
+    <section class="block block--tight" aria-labelledby="h-cats">
+      <div class="wrap">
+        <div class="block__head"><h2 id="h-cats">Shop by category</h2><a class="more" href="shop.html">See every product</a></div>
+        <div id="cats"></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-best">
+      <div class="wrap">
+        <div class="block__head">
+          <div><h2 id="h-best">Best sellers</h2><p>The builds and parts people buy most.</p></div>
+        </div>
+        <div class="tabs" id="best-tabs"></div>
+        <div id="best-grid"></div>
+      </div>
+    </section>
+
+    <section class="block block--tight" aria-labelledby="h-deals">
+      <div class="wrap">
+        <div class="block__head"><div><h2 id="h-deals">Biggest discounts</h2><p>In-stock products with the largest price cuts.</p></div><a class="more" href="shop.html?sort=discount">See all deals</a></div>
+        <div class="rail" id="deals"></div>
+      </div>
+    </section>
+
+    <section class="block block--navy" aria-labelledby="h-build">
+      <div class="wrap banner">
+        <div>
+          <h2 id="h-build">Choose every part yourself</h2>
+          <p>Pick a processor, board, memory and more. The builder checks that the parts fit together and estimates the power supply you need.</p>
+          <div class="btn-row">
+            <a class="btn btn--amber" href="build.html">Start a custom build</a>
+            <a class="btn btn--ghost" id="build-wa" href="#" target="_blank" rel="noopener">Ask us on WhatsApp</a>
+          </div>
+        </div>
+        <ul class="slots" aria-label="What the builder checks">
+          <li id="slot-1"></li><li id="slot-2"></li><li id="slot-3"></li><li id="slot-4"></li><li id="slot-5"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-facts">
+      <div class="wrap two">
+        <div>
+          <h2 id="h-facts">What you get with every PC</h2>
+          <ul class="facts" id="facts"></ul>
+        </div>
+        <div class="report" id="report"></div>
+      </div>
+    </section>
+
+    <section class="block block--tight" aria-labelledby="h-emi">
+      <div class="wrap">
+        <div class="block__head"><div><h2 id="h-emi">Split the cost</h2><p>Check the monthly amount before you decide.</p></div></div>
+        <div class="calc" id="calc"></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-steps">
+      <div class="wrap">
+        <div class="block__head"><h2 id="h-steps">From cart to your desk</h2></div>
+        <ol class="steps" id="steps"></ol>
+      </div>
+    </section>
+
+    <section class="block block--tight" id="recent-sec" aria-labelledby="h-recent" hidden>
+      <div class="wrap">
+        <div class="block__head"><h2 id="h-recent">Recently viewed</h2></div>
+        <div class="rail" id="recent"></div>
+      </div>
+    </section>
+
+    <section class="block block--tight" aria-labelledby="h-brands">
+      <div class="wrap">
+        <div class="block__head"><h2 id="h-brands">Brands we stock</h2></div>
+        <div class="brands" id="brands"></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-faq">
+      <div class="wrap two">
+        <div><h2 id="h-faq">Questions people ask</h2><p class="lead" style="margin-top:12px">Not here? Message us and we will answer.</p></div>
+        <div class="faq" id="faq"></div>
+      </div>
+    </section>
+
+    <section class="block block--navy" aria-labelledby="h-help">
+      <div class="wrap banner">
+        <div>
+          <h2 id="h-help">Not sure which PC to pick?</h2>
+          <p>Tell us your budget and what you will use the PC for. We will suggest a build on WhatsApp.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--amber" id="cta-wa" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn btn--ghost" id="cta-call" href="#"></a>
+          <a class="btn btn--ghost" href="contact.html">Contact page</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/rgb-hero.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/compat.js"></script>
+  <script src="js/assistant-kb.js"></script>
+  <script src="js/assistant-brain.js"></script>
+  <script src="js/assistant.js"></script>
+</body>
+</html>

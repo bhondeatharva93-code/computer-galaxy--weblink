@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Store assistant: the chat button and window.
+   Uses the colour and size variables from styles.css, so changing them there
+   changes the chat too.
+   ========================================================================== */
+
+.ca { font-family: var(--body); }
+.ca-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ca button, .ca input { font-family: inherit; }
+.ca a:focus-visible, .ca button:focus-visible, .ca input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ---------- Ask AI button in the header ---------- */
+.ask-ai { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-right: 6px; padding: 0 16px 0 12px; border: 0; border-radius: 22px; background: var(--amber); color: var(--amber-ink); font: 700 15px/1 var(--body); white-space: nowrap; cursor: pointer; }
+.ask-ai:hover { background: var(--amber-hi); }
+.ask-ai:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 480px) { .ask-ai { gap: 5px; padding: 0 11px 0 9px; margin-right: 0; font-size: 14px; } .ask-ai .ico { width: 18px; height: 18px; } }
+
+/* ---------- The button ---------- */
+.ca-launch { position: fixed; right: 20px; bottom: 20px; z-index: 80; display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 20px 0 16px; border: 0; border-radius: 26px; background: var(--navy); color: #fff; font: 700 15px/1 var(--body); box-shadow: 0 10px 28px rgba(11,23,48,.32); cursor: pointer; transition: background .15s; }
+.ca-launch:hover { background: var(--navy-3); }
+.ca-launch .ico { color: var(--amber); }
+.ca-launch:focus-visible { outline-color: var(--amber); }
+
+/* ---------- The window ---------- */
+.ca-panel { position: fixed; right: 20px; bottom: 84px; z-index: 85; width: 392px; height: min(600px, calc(100dvh - 260px)); min-height: 380px; display: flex; flex-direction: column; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 24px 64px rgba(11,23,48,.3); }
+.ca-panel[hidden] { display: none; }
+.ca-panel:not([hidden]) { animation: ca-in .18s ease-out; }
+@keyframes ca-in { from { opacity: 0; transform: translateY(10px); } }
+
+.ca-head { display: flex; align-items: center; gap: 4px; padding: 12px 8px 12px 16px; background: var(--navy); color: #fff; }
+.ca-head__title { flex: 1; min-width: 0; }
+.ca-head strong { display: block; font: 700 24px/1 var(--display); letter-spacing: .01em; }
+.ca-head span { display: block; margin-top: 4px; font-size: 13px; line-height: 1.3; color: var(--on-navy-2); }
+.ca-icon { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #fff; cursor: pointer; }
+.ca-icon:hover { background: var(--navy-3); }
+.ca-icon:focus-visible { outline-color: var(--amber); }
+
+/* ---------- Messages ---------- */
+.ca-log { position: relative; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 16px 14px 10px; display: flex; flex-direction: column; gap: 14px; background: #fff; }
+.ca-msg { display: grid; gap: 8px; max-width: 100%; }
+.ca-msg--me { justify-items: end; }
+.ca-bubble { padding: 10px 13px; border-radius: 14px 14px 14px 4px; background: var(--board); font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+.ca-msg--me .ca-bubble { max-width: 88%; background: var(--navy); color: #fff; border-radius: 14px 14px 4px 14px; }
+.ca-bubble p, .ca-after p { margin: 0 0 6px; }
+.ca-bubble ul { margin: 0 0 6px; padding-left: 18px; }
+.ca-bubble li { margin: 2px 0; }
+.ca-bubble > :last-child, .ca-after > :last-child { margin-bottom: 0; }
+.ca-after { padding: 0 4px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+.ca-typing { display: inline-flex; gap: 5px; padding: 15px 14px; border-radius: 14px 14px 14px 4px; background: var(--board); justify-self: start; }
+.ca-typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: ca-dot 1s infinite ease-in-out; }
+.ca-typing i:nth-child(2) { animation-delay: .15s; }
+.ca-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes ca-dot { 0%, 60%, 100% { opacity: .35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+/* ---------- Product cards ---------- */
+.ca-cards { display: grid; gap: 8px; }
+.ca-card { display: grid; grid-template-columns: 72px 1fr; gap: 12px; padding: 10px; border: 1px solid var(--line); border-radius: var(--r); background: #fff; }
+.ca-thumb { width: 72px; height: 72px; display: grid; place-items: center; border-radius: var(--r-sm); background: var(--board); color: var(--ink-2); overflow: hidden; }
+.ca-thumb svg { width: 32px; height: 32px; }
+.ca-thumb--pc { padding: 5px; background: #13234a; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--hue, #2760f0) 38%, #0b1730), #0b1730 74%); }
+.ca-thumb--pc svg { width: 100%; height: 100%; }
+.ca-card__body { min-width: 0; display: grid; gap: 4px; align-content: start; }
+.ca-note { justify-self: start; padding: 1px 9px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: 12.5px; font-weight: 600; line-height: 1.5; }
+.ca-card__name { color: var(--ink); font-weight: 700; line-height: 1.25; text-decoration: none; overflow-wrap: anywhere; }
+.ca-card__name:hover { text-decoration: underline; }
+.ca-price { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.ca-price strong { font-size: 17px; }
+.ca-price s { color: var(--muted); font-size: 13px; }
+.ca-price span { color: var(--ok); font-size: 13px; font-weight: 600; }
+.ca-card__btns { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 4px; }
+.ca-link { display: inline-flex; align-items: center; min-height: 38px; color: var(--blue); font-size: 14px; font-weight: 600; }
+.ca-out { font-size: 14px; color: var(--muted); }
+
+/* ---------- Suggestions and links ---------- */
+.ca-chips, .ca-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ca-chip { min-height: 38px; padding: 6px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 500; line-height: 1.25; text-align: left; cursor: pointer; }
+.ca-chip:hover { background: var(--board); border-color: var(--ink-2); }
+.ca-act { display: inline-flex; align-items: center; min-height: 38px; padding: 6px 14px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: #fff; color: var(--ink); font-size: 14px; font-weight: 700; line-height: 1.2; text-decoration: none; }
+.ca-act:hover { background: var(--ink); color: #fff; }
+
+/* ---------- Message box ---------- */
+.ca-form { display: flex; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: #fff; }
+.ca-form input { flex: 1; min-width: 0; height: 48px; padding: 0 14px; border: 1px solid var(--line-2); border-radius: var(--r-sm); background: #fff; color: var(--ink); font-size: 16px; }
+.ca-form input::placeholder { color: var(--muted); }
+.ca-send { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border: 0; border-radius: var(--r-sm); background: var(--amber); color: var(--amber-ink); cursor: pointer; }
+.ca-send:hover { background: var(--amber-hi); }
+
+/* ---------- Phones: the window fills the screen ---------- */
+@media (max-width: 640px) {
+  .ca-launch { right: 14px; bottom: 14px; width: 56px; height: 56px; padding: 0; justify-content: center; border-radius: 50%; }
+  .ca-launch__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ca-panel { inset: 0; width: auto; height: 100dvh; border: 0; border-radius: 0; }
+  body.ca-lock { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ca-panel:not([hidden]) { animation: none; }
+  .ca-typing i { animation: none; opacity: .6; }
+  .ca-launch { transition: none; }
+}
+@media print { .ca { display: none; } }
